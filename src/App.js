@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./index.css";
+import React, { createContext, useContext, useState, useRef } from "react";
+import Intro from "./Components/Intro";
+import Skills from "./Components/Skills";
+import Nav from "./Components/Nav";
+import Projects from "./Components/Projects";
+import Portfolio from "./Components/Portfolio";
+
+export const RefContext = createContext();
 
 function App() {
+  //Refs to scroll to said component
+  const IntroRef = useRef(null);
+  const SkillsRef = useRef(null);
+  const ProjectsRef = useRef(null);
+  const PortfolioRef = useRef(null);
+
+  //REF FORWARD TO NAV COMP
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RefContext.Provider
+      value={{ IntroRef, SkillsRef, ProjectsRef, PortfolioRef }}
+    >
+      <div ref={IntroRef}>
+        <Intro />
+      </div>
+      <div ref={SkillsRef}>
+        <Skills />
+      </div>
+      <div ref={ProjectsRef}>
+        <Projects />
+      </div>
+      <div ref={PortfolioRef}>
+        <Portfolio />
+      </div>
+
+      {/* Nav Rendered last due to the refs needing an actual value */}
+      <Nav />
+    </RefContext.Provider>
   );
 }
 
