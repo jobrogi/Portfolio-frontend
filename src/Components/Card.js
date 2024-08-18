@@ -1,84 +1,11 @@
 import "../index.css";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 
 function Card(props) {
-  const divRef = useRef(null);
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
-  const [skewX, setSkewX] = useState(0.0);
-  const [skewY, setSkewY] = useState(0.0);
-  const [positionX, setPositionX] = useState({ xStart: 0, xEnd: 0 });
-  const [positionY, setPositionY] = useState({ yStart: 0, yEnd: 0 });
-
-  const minX = -2;
-  const maxX = 2;
-  // Props include:
-  // Icon C++ ICON
-  // Name C++
-  // Category Programming Language
-  // Description
-  //Progress Bar percentage
-
-  function mapInRange(num, inMin, inMax, outMin, outMax) {
-    return (
-      (((num - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin) * -1
-    );
-  }
-
-  function getDivPos() {
-    const rect = divRef.current.getBoundingClientRect();
-    setPositionX({ xStart: rect.left, xEnd: rect.right });
-    setPositionY({ yStart: rect.top, yEnd: rect.bottom });
-  }
-
-  useEffect(() => {
-    getDivPos(divRef.current);
-
-    // console.log(divRef);
-  }, []);
-
-  useEffect(() => {
-    const handleWindowMouseMove = (event) => {
-      setCoords({
-        x: event.clientX,
-        y: event.clientY,
-      });
-    };
-
-    const handleSkew = () => {
-      if (isHovering) {
-        setSkewX(
-          Math.round(
-            mapInRange(coords.x, positionX.xStart, positionX.xEnd, minX, maxX)
-          )
-        );
-        setSkewY(
-          Math.round(
-            mapInRange(coords.y, positionY.yStart, positionY.yEnd, minX, maxX)
-          )
-        );
-      }
-    };
-
-    window.addEventListener("mousemove", handleWindowMouseMove);
-    const animationFrame = requestAnimationFrame(handleSkew);
-
-    return () => {
-      window.removeEventListener("mousemove", handleWindowMouseMove);
-      cancelAnimationFrame(animationFrame);
-    };
-  });
-
-  const skewStyle = {
-    transform: `skewX(${skewY}deg) skewY(${skewX}deg)`,
-  };
 
   return (
-    <div
-      className="bg-ccOffWhite rounded-md shadow-2xl shadow-black w-80 h-400 p-4 flex flex-wrap m-4 content-between relative transition-all"
-      style={skewStyle}
-      ref={divRef}
-    >
+    <div className="bg-ccOffWhite rounded-md shadow-2xl shadow-black w-320 h-400 p-4 flex flex-wrap m-4 content-between relative transition-all bg-gradient-to-t from-ccOffWhite to-orange-200 hover:w-330 hover:h-410">
       <button
         className="absolute top-0 left-0 w-full h-full"
         onMouseEnter={() => {
@@ -86,8 +13,6 @@ function Card(props) {
         }}
         onMouseLeave={() => {
           setIsHovering(false);
-          setSkewX(0.0);
-          setSkewY(0.0);
         }}
       ></button>
       <div className="flex flex-wrap content-start">

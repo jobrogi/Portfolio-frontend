@@ -72,7 +72,7 @@ function Nav() {
           className={`flex items-center justify-center h-24 left-0 w-full pointer-events-none transition-all duration-1000   ${
             isFixed
               ? "fixed top-0 text-3xl"
-              : "fixed top-56 text-5xl text-orange-500"
+              : "fixed top-60 text-8xl text-orange-500"
           }`}
         >
           <button

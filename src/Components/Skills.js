@@ -7,7 +7,7 @@ function Skills(props) {
   return (
     <div
       ref={props.ref}
-      className="bg-ccGray w-full min-h-screen px-20 py-32 flex flex-wrap justify-evenly"
+      className="bg-ccGray w-full min-h-screen px-72 py-32 flex flex-wrap justify-evenly"
     >
       <Card
         Name="C++"
