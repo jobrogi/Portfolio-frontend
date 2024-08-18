@@ -21,7 +21,7 @@ function App() {
     <RefContext.Provider
       value={{ IntroRef, SkillsRef, ProjectsRef, PortfolioRef }}
     >
-      <div ref={IntroRef}>
+      <div ref={IntroRef} className="">
         <Intro />
       </div>
       <div ref={SkillsRef}>
