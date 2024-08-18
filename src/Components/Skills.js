@@ -1,7 +1,7 @@
 import "../index.css";
 import Card from "./Card";
-import cPlusPlus from "../C++.png";
-import cSharp from "../CSharp.png";
+import cPlusPlus from "../assets/C++.png";
+import cSharp from "../assets/CSharp.png";
 
 function Skills(props) {
   return (

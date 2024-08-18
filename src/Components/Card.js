@@ -2,26 +2,20 @@ import "../index.css";
 import React, { useState } from "react";
 
 function Card(props) {
-  const [isHovering, setIsHovering] = useState(false);
-
   return (
     <div className="bg-ccOffWhite rounded-md shadow-2xl shadow-black w-320 h-400 p-4 flex flex-wrap m-4 content-between relative transition-all bg-gradient-to-t from-ccOffWhite to-orange-200 hover:w-330 hover:h-410">
-      <button
-        className="absolute top-0 left-0 w-full h-full"
-        onMouseEnter={() => {
-          setIsHovering(true);
-        }}
-        onMouseLeave={() => {
-          setIsHovering(false);
-        }}
-      ></button>
+      <button className="absolute top-0 left-0 w-full h-full"></button>
       <div className="flex flex-wrap content-start">
         {props.isFontAwesome === true ? (
           <div className="w-20 h-20 text-6xl flex justify-center items-center me-2">
             {props.Icon}
           </div>
         ) : (
-          <img src={props.Icon} className="w-20 h-20 object-cover"></img>
+          <img
+            src={props.Icon}
+            alt="Oh No"
+            className="w-20 h-20 object-cover"
+          ></img>
         )}
         <div className="h-fit">
           <h1 className="text-2xl pt-2 font-Raleway font-black">
