@@ -79,22 +79,50 @@ function Intro() {
   const handleUFOState = () => {
     if (isSucking === true) {
       return (
-        <img
-          className="transition-transform"
-          style={{
-            position: "absolute",
-            left: position.x,
-            top: position.y + yPos,
-            transform: `translate(-50%, -50%) rotate(${tilt}deg)`,
-
-            cursor: "none",
-          }}
-          src={UFOSucking}
+        <div
           onDragStart={(event) => {
             event.preventDefault();
           }}
-          alt="oh no"
-        ></img>
+        >
+          <div
+            className="absolute top-0 left-0 w-14 h-screen  bg-gradient-to-r from-transparent via-green-500 to-transparent"
+            style={{
+              position: "absolute",
+              left: position.x,
+              top: position.y + yPos,
+              transform: `translate(-50%, 0%) `,
+            }}
+          ></div>
+          <img
+            className="transition-transform"
+            style={{
+              position: "absolute",
+              left: position.x,
+              top: position.y + yPos,
+              transform: `translate(-50%, -50%) rotate(${tilt}deg)`,
+
+              cursor: "none",
+            }}
+            src={UFO}
+            alt="oh no"
+          ></img>
+          {/* <img
+            className="transition-transform"
+            style={{
+              position: "absolute",
+              left: position.x,
+              top: position.y + yPos,
+              transform: `translate(-50%, -50%) rotate(${tilt}deg)`,
+
+              cursor: "none",
+            }}
+            src={UFOSucking}
+            onDragStart={(event) => {
+              event.preventDefault();
+            }}
+            alt="oh no"
+          ></img> */}
+        </div>
       );
     } else if (isSucking === false) {
       return (

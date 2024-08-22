@@ -69,6 +69,16 @@ function Skills(props) {
         Percent={89.4}
         isFontAwesome={true}
       />
+
+      <Card
+        Name="Node/Express"
+        Category="Framework"
+        Icon={<i class="fa-brands fa-node-js"></i>}
+        Desc="Node.js is a JavaScript runtime environment that allows you to run JavaScript code outside of a web browser. Express.js is a popular web framework built on top of Node.js, providing tools and features for creating efficient and scalable web applications. Together, they form a powerful combination for building server-side web applications in JavaScript."
+        Level="3"
+        Percent={10.4}
+        isFontAwesome={true}
+      />
     </div>
   );
 }

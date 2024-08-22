@@ -69,9 +69,9 @@ function Nav() {
   }, []);
 
   return (
-    <div className="bg-ccDark w-full h-24 sticky top-0 font-Raleway font-black">
+    <div className="w-full h-24 sticky font-Raleway font-black">
       {/* Nav ------------------------------------------------------------------------------------------------------------*/}
-      <div className="w-full h-24 bg-ccBlack lg:px-18 flex flex-nowrap shadow-2xl shadow-black text-white fixed top-0 z-10 md:px-6 px-4">
+      <div className="w-full h-24 bg-ccDark  lg:px-18 flex flex-nowrap shadow-2xl shadow-black text-white fixed  bottom-0 z-10 md:px-6 px-4">
         {isMobile === false ? (
           <ul className="flex justify-start w-full h-24 items-center ">
             <button>
