@@ -144,7 +144,7 @@ function Intro() {
   };
 
   return (
-    <div className="bg-ccDark w-full h-screen font-Merriweather relative overflow-hidden">
+    <div className=" w-full h-screen font-Merriweather relative overflow-hidden pattern-cross pattern-ccGray pattern-bg-ccDark pattern-size-24 pattern-opacity-100">
       <div className="h-1/4 w-full items-end flex flex-nowrap">
         <p className="w-full text-center text-4xl text-white pb-20 ">
           Hi, I am

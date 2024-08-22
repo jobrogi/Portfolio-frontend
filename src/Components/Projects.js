@@ -2,7 +2,7 @@ import "../index.css";
 
 function Projects() {
   return (
-    <div className="bg-ccDark w-full min-h-screen px-20 py-32">
+    <div className=" w-full min-h-screen px-20 py-32 pattern-paper pattern-ccGray pattern-bg-ccDark pattern-size-24 pattern-opacity-100">
       <div className="flex flex-nowrap">
         <div className="flex flex-wrap w-1/2">
           <div className="w-1/2 min-h-96 h-auto p-3 hover:p-1 transition-all group">
