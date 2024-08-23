@@ -3,23 +3,28 @@ import Card from "./Card";
 import cPlusPlus from "../assets/C++.png";
 import cSharp from "../assets/CSharp.png";
 
+import React, { useContext } from "react";
+import { RWDContext } from "../App";
+
 function Skills(props) {
+  const { rwdState } = useContext(RWDContext);
+
   return (
     <div
       ref={props.ref}
-      className="bg-ccGray w-full min-h-screen px-72 py-32 flex flex-wrap justify-evenly"
+      // px-72 py-32 BREAKS MOBILE ADD RESPECTIVE DEVICE
+      className="max-w-screen w-full min-h-screen bg-ccGray flex flex-wrap justify-center items-center py-24 Desktop:px-200 "
     >
       <Card
         Name="C++"
         Category="Programming Language"
         Icon={cPlusPlus}
         Desc=" C++ Is an enhanced version of the programming language C, in which
-        essentially includes support for Object Oriented Programming."
+      essentially includes support for Object Oriented Programming."
         Level="3"
         Percent={10.4}
         isFontAwesome={false}
       />
-
       <Card
         Name="Javascript"
         Category="Programming Language"
@@ -60,6 +65,10 @@ function Skills(props) {
         isFontAwesome={true}
       />
 
+      {/* acts kinda like the <br> element. */}
+      {/* Conditionally renders the element only if in laptop or desktop state */}
+      {rwdState === "Desktop" ? <div className=" basis-full"></div> : ""}
+
       <Card
         Name="Control Systems"
         Category="Engineering"
@@ -73,7 +82,7 @@ function Skills(props) {
       <Card
         Name="Node/Express"
         Category="Framework"
-        Icon={<i class="fa-brands fa-node-js"></i>}
+        Icon={<i className="fa-brands fa-node-js"></i>}
         Desc="Node.js is a JavaScript runtime environment that allows you to run JavaScript code outside of a web browser. Express.js is a popular web framework built on top of Node.js, providing tools and features for creating efficient and scalable web applications. Together, they form a powerful combination for building server-side web applications in JavaScript."
         Level="3"
         Percent={10.4}

@@ -1,9 +1,12 @@
 import "../index.css";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import UFO from "../assets/UFO.png";
-import UFOSucking from "../assets/UFOSUCK.png";
+import { RWDContext } from "../App";
 
 function Intro() {
+  //Reads Screen width state from App.js
+  const { rwdState } = useContext(RWDContext);
+
   // Mouse coords (hook)
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isMouseMoving, setIsMouseMoving] = useState(false);
@@ -16,8 +19,6 @@ function Intro() {
   const [tilt, setTilt] = useState(0); // Store tilt angle directly
   const timerRef = useRef(null);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
-
-  const tiltThreshold = 5;
 
   useEffect(() => {
     //Handles Main Mouse Movement for UFO
@@ -77,36 +78,37 @@ function Intro() {
   });
 
   const handleUFOState = () => {
-    if (isSucking === true) {
-      return (
-        <div
-          onDragStart={(event) => {
-            event.preventDefault();
-          }}
-        >
+    if (rwdState !== "Phone" && rwdState !== "Tablet") {
+      if (isSucking === true) {
+        return (
           <div
-            className="absolute top-0 left-0 w-14 h-screen  bg-gradient-to-r from-transparent via-green-500 to-transparent"
-            style={{
-              position: "absolute",
-              left: position.x,
-              top: position.y + yPos,
-              transform: `translate(-50%, 0%) `,
+            onDragStart={(event) => {
+              event.preventDefault();
             }}
-          ></div>
-          <img
-            className="transition-transform"
-            style={{
-              position: "absolute",
-              left: position.x,
-              top: position.y + yPos,
-              transform: `translate(-50%, -50%) rotate(${tilt}deg)`,
+          >
+            <div
+              className="absolute top-0 left-0 w-14 h-screen bg-gradient-to-r from-transparent via-green-500 to-transparent"
+              style={{
+                position: "absolute",
+                left: position.x,
+                top: position.y + yPos,
+                transform: `translate(-50%, 0%) `,
+              }}
+            ></div>
+            <img
+              className="transition-transform"
+              style={{
+                position: "absolute",
+                left: position.x,
+                top: position.y + yPos,
+                transform: `translate(-50%, -50%) rotate(${tilt}deg)`,
 
-              cursor: "none",
-            }}
-            src={UFO}
-            alt="oh no"
-          ></img>
-          {/* <img
+                cursor: "none",
+              }}
+              src={UFO}
+              alt="oh no"
+            ></img>
+            {/* <img
             className="transition-transform"
             style={{
               position: "absolute",
@@ -122,30 +124,31 @@ function Intro() {
             }}
             alt="oh no"
           ></img> */}
-        </div>
-      );
-    } else if (isSucking === false) {
-      return (
-        <img
-          className="transition-transform"
-          style={{
-            position: "absolute",
-            left: position.x,
-            top: position.y + yPos,
-            transform: `translate(-50%, -50%) rotate(${tilt}deg)`,
+          </div>
+        );
+      } else if (isSucking === false) {
+        return (
+          <img
+            className="transition-transform"
+            style={{
+              position: "absolute",
+              left: position.x,
+              top: position.y + yPos,
+              transform: `translate(-50%, -50%) rotate(${tilt}deg)`,
 
-            cursor: "none",
-          }}
-          src={UFO}
-          alt="oh no"
-        ></img>
-      );
+              cursor: "none",
+            }}
+            src={UFO}
+            alt="oh no"
+          ></img>
+        );
+      }
     }
   };
 
   return (
-    <div className=" w-full h-screen font-Merriweather relative overflow-hidden pattern-cross pattern-ccGray pattern-bg-ccDark pattern-size-24 pattern-opacity-100">
-      <div className="h-1/4 w-full items-end flex flex-nowrap">
+    <div className="max-w-screen min-h-fit pb-52 w-full font-Merriweather  pattern-cross pattern-bg-ccDark pattern-ccGray  pattern-size-24 pattern-opacity-100">
+      <div className="w-full items-end flex flex-nowrap pt-44">
         <p className="w-full text-center text-4xl text-white pb-20 ">
           Hi, I am
         </p>

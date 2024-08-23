@@ -1,13 +1,12 @@
 import "../index.css";
 import React, { useEffect, useState, useContext } from "react";
-import { RefContext } from "../App"; // Adjust the path as needed
-
+import { RefContext, RWDContext } from "../App";
 function Nav() {
-  var screenWidth = window.screen.width;
-  const [isMobile, setIsMobile] = useState(false);
-
   const { IntroRef, SkillsRef, ProjectsRef, PortfolioRef } =
     useContext(RefContext);
+
+  //Reads Screen width state from App.js
+  const { rwdState } = useContext(RWDContext);
 
   const section_1 = 1200;
   const section_2 = 2400;
@@ -47,16 +46,6 @@ function Nav() {
     }
   }
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   //Event listener for listening for a mouse scroll wheel.
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -68,14 +57,24 @@ function Nav() {
     };
   }, []);
 
+  const handleDynamicName = () => {
+    if (rwdState === "Phone") {
+      return "J.G";
+    } else if (rwdState === "Tablet") {
+      return "J Gilliam";
+    } else {
+      return "Jonathon Gilliam";
+    }
+  };
+
   return (
-    <div className="w-full h-24 sticky font-Raleway font-black">
+    <div className="w-full h-24 absolute left-0 bottom-0 font-Raleway font-black">
       {/* Nav ------------------------------------------------------------------------------------------------------------*/}
       <div className="w-full h-24 bg-ccDark  lg:px-18 flex flex-nowrap shadow-2xl shadow-black text-white fixed  bottom-0 z-10 md:px-6 px-4">
-        {isMobile === false ? (
+        {rwdState !== "Phone" ? (
           <ul className="flex justify-start w-full h-24 items-center ">
             <button>
-              <i class="fa-solid fa-bars text-2xl"></i>
+              <i className="fa-solid fa-bars text-2xl"></i>
             </button>
           </ul>
         ) : (
@@ -97,19 +96,20 @@ function Nav() {
           }`}
         >
           <button
-            className=" pointer-events-auto"
+            className=" pointer-events-auto text-nowrap"
             onClick={() => {
               IntroRef.current.scrollIntoView({ behavior: "smooth" });
             }}
           >
             {" "}
-            {isMobile === false ? "Jonathon Gilliam" : "J Gilliam"}
+            {/* {rwdState !== "Phone" ? "Jonathon Gilliam" : "J Gilliam"} */}
+            {handleDynamicName()}
           </button>
         </li>
 
-        {isMobile === true ? (
+        {rwdState === "Phone" ? (
           <ul className="flex justify-end w-full h-24 items-center">
-            <i class="fa-solid fa-bars text-2xl"></i>
+            <i className="fa-solid fa-bars text-2xl"></i>
           </ul>
         ) : (
           <ul className="flex justify-end w-full h-24 items-center">

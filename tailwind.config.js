@@ -3,6 +3,12 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
+      screens: {
+        Desktop: "1024px",
+        Laptop: "769px",
+        Tablet: "481px",
+        Phone: "320px",
+      },
       colors: {
         ccDark: "#181818",
         ccGray: "#1f1f1f",
@@ -19,6 +25,7 @@ module.exports = {
       height: {
         400: "400px",
         410: "410px",
+        420: "420px",
         500: "500px",
 
         81: "81rem",
@@ -30,6 +37,14 @@ module.exports = {
       width: {
         320: "320px",
         330: "330px",
+      },
+      padding: {
+        100: "100px",
+        110: "110px",
+        120: "120px",
+
+        150: "150px",
+        200: "200px",
       },
     },
   },
