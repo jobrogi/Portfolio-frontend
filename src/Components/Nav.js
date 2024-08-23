@@ -5,6 +5,9 @@ function Nav() {
   const { IntroRef, SkillsRef, ProjectsRef, PortfolioRef } =
     useContext(RefContext);
 
+  //controls hamburger menu
+  const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+
   //Reads Screen width state from App.js
   const { rwdState } = useContext(RWDContext);
 
@@ -69,22 +72,111 @@ function Nav() {
 
   return (
     <div className="w-full h-24 absolute left-0 bottom-0 font-Raleway font-black">
+      {showHamburgerMenu ? (
+        <div className="bottom-24 left-0 fixed bg-ccOffWhite w-16 h-fit transition-all duration-1000">
+          <ul className="pt-4 w-full">
+            <li className="w-full text-center">
+              <button>
+                <i class="fa-brands fa-linkedin text-6xl"></i>
+              </button>
+            </li>
+            <li className="w-full text-center">
+              <button>
+                <i class="fa-solid fa-envelope text-6xl"></i>
+              </button>
+            </li>
+            <li className="w-full text-center">
+              <button>
+                <i class="fa-brands fa-github text-6xl"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      ) : (
+        <div className="-bottom-52 left-0 fixed bg-ccOffWhite w-16 h-fit transition-all duration-1000">
+          <ul className="pt-4 w-full">
+            <li className="w-full text-center">
+              <button>
+                <i class="fa-brands fa-linkedin text-6xl"></i>
+              </button>
+            </li>
+            <li className="w-full text-center">
+              <button>
+                <i class="fa-solid fa-envelope text-6xl"></i>
+              </button>
+            </li>
+            <li className="w-full text-center">
+              <button>
+                <i class="fa-brands fa-github text-6xl"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      )}
+
       {/* Nav ------------------------------------------------------------------------------------------------------------*/}
       <div className="w-full h-24 bg-ccDark  lg:px-18 flex flex-nowrap shadow-2xl shadow-black text-white fixed  bottom-0 z-10 md:px-6 px-4">
         {rwdState !== "Phone" ? (
           <ul className="flex justify-start w-full h-24 items-center ">
-            <button>
-              <i className="fa-solid fa-bars text-2xl"></i>
+            {/* Hamburger Menu Toggle */}
+            <button
+              onClick={() => {
+                if (showHamburgerMenu === false) {
+                  setShowHamburgerMenu(true);
+                } else {
+                  setShowHamburgerMenu(false);
+                }
+              }}
+            >
+              {showHamburgerMenu ? (
+                <i class="fa-solid fa-caret-down text-2xl flex flex-nowrap items-center">
+                  {rwdState !== "Phone" ? (
+                    <h1 className="ps-4 text-xl">Contact</h1>
+                  ) : (
+                    ""
+                  )}
+                </i>
+              ) : (
+                <i className="fa-solid fa-bars text-2xl flex flex-nowrap items-center">
+                  {rwdState !== "Phone" ? (
+                    <h1 className="ps-4 text-xl">Contact</h1>
+                  ) : (
+                    ""
+                  )}
+                </i>
+              )}
             </button>
           </ul>
         ) : (
           <ul className="flex justify-start w-full h-24 items-center ">
-            <li className="ms-2 me-2 text-2xl">
-              <button>Contact</button>
-            </li>
-            <li className="ms-2 me-2 text-2xl">
-              <button>Socials</button>
-            </li>
+            {/* Hamburger Menu Toggle */}
+            <button
+              onClick={() => {
+                if (showHamburgerMenu === false) {
+                  setShowHamburgerMenu(true);
+                } else {
+                  setShowHamburgerMenu(false);
+                }
+              }}
+            >
+              {showHamburgerMenu ? (
+                <i class="fa-solid fa-caret-down text-2xl flex flex-nowrap items-center">
+                  {rwdState !== "Phone" ? (
+                    <h1 className="ps-4 text-xl">Contact</h1>
+                  ) : (
+                    ""
+                  )}
+                </i>
+              ) : (
+                <i className="fa-solid fa-bars text-2xl flex flex-nowrap items-center">
+                  {rwdState !== "Phone" ? (
+                    <h1 className="ps-4 text-xl">Contact</h1>
+                  ) : (
+                    ""
+                  )}
+                </i>
+              )}
+            </button>
           </ul>
         )}
 
@@ -107,54 +199,48 @@ function Nav() {
           </button>
         </li>
 
-        {rwdState === "Phone" ? (
-          <ul className="flex justify-end w-full h-24 items-center">
-            <i className="fa-solid fa-bars text-2xl"></i>
-          </ul>
-        ) : (
-          <ul className="flex justify-end w-full h-24 items-center">
-            <li
-              className={`ms-2 me-2 text-2xl transition-all ${
-                liActive === 1 ? "text-3xl text-orange-500" : ""
-              }`}
+        <ul className="flex justify-end w-full h-24 items-center">
+          <li
+            className={`ms-2 me-2 text-2xl transition-all ${
+              liActive === 1 ? "text-3xl text-orange-500" : ""
+            }`}
+          >
+            <button
+              className=""
+              onClick={() => {
+                SkillsRef.current.scrollIntoView({ behavior: "smooth" });
+              }}
             >
-              <button
-                className=""
-                onClick={() => {
-                  SkillsRef.current.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                Skills
-              </button>
-            </li>
-            <li
-              className={`ms-2 me-2 text-2xl transition-all ${
-                liActive === 2 ? "text-3xl text-orange-500" : ""
-              }`}
+              Skills
+            </button>
+          </li>
+          <li
+            className={`ms-2 me-2 text-2xl transition-all ${
+              liActive === 2 ? "text-3xl text-orange-500" : ""
+            }`}
+          >
+            <button
+              onClick={() => {
+                ProjectsRef.current.scrollIntoView({ behavior: "smooth" });
+              }}
             >
-              <button
-                onClick={() => {
-                  ProjectsRef.current.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                Projects
-              </button>
-            </li>
-            <li
-              className={`ms-2 me-2 text-2xl transition-all ${
-                liActive === 3 ? "text-3xl text-orange-500" : ""
-              }`}
+              Projects
+            </button>
+          </li>
+          <li
+            className={`ms-2 me-2 text-2xl transition-all ${
+              liActive === 3 ? "text-3xl text-orange-500" : ""
+            }`}
+          >
+            <button
+              onClick={() => {
+                PortfolioRef.current.scrollIntoView({ behavior: "smooth" });
+              }}
             >
-              <button
-                onClick={() => {
-                  PortfolioRef.current.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                Portfolio
-              </button>
-            </li>
-          </ul>
-        )}
+              Portfolio
+            </button>
+          </li>
+        </ul>
       </div>
       {/* -----------------------------------------------------------------------------------------------------------------*/}
     </div>
