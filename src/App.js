@@ -24,7 +24,7 @@ function App() {
         (window.outerWidth <= 1200 && window.outerWidth >= 1024)
       ) {
         setRwdState("Desktop");
-      } else if (window.outerWidth < 1024 && window.outerWidth >= 770) {
+      } else if (window.outerWidth < 1024 && window.outerWidth >= 780) {
         setRwdState("Laptop");
       } else if (window.outerWidth < 770 && window.outerWidth >= 480) {
         setRwdState("Tablet");

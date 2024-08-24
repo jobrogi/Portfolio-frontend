@@ -211,7 +211,7 @@ function Nav() {
                 SkillsRef.current.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Skills
+              <h1 className="Phone:text-base Tablet:text-2xl">Skills</h1>
             </button>
           </li>
           <li
@@ -224,7 +224,7 @@ function Nav() {
                 ProjectsRef.current.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Projects
+              <h1 className="Phone:text-base Tablet:text-2xl">Projects</h1>
             </button>
           </li>
           <li
@@ -233,11 +233,12 @@ function Nav() {
             }`}
           >
             <button
+              className=""
               onClick={() => {
                 PortfolioRef.current.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Portfolio
+              <h1 className="Phone:text-base Tablet:text-2xl">Portfolio</h1>
             </button>
           </li>
         </ul>
