@@ -77,17 +77,37 @@ function Nav() {
           <ul className="pt-4 w-full">
             <li className="w-full text-center">
               <button>
-                <i class="fa-brands fa-linkedin text-6xl"></i>
+                <a
+                  href="https://www.linkedin.com/in/jbgilliam"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {" "}
+                  <i class="fa-brands fa-linkedin text-6xl"></i>
+                </a>
               </button>
             </li>
             <li className="w-full text-center">
               <button>
-                <i class="fa-solid fa-envelope text-6xl"></i>
+                <a
+                  href="mailto:Jobrogi@gmail.com?subject=Cool Website!"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i class="fa-solid fa-envelope text-6xl"></i>
+                </a>
               </button>
             </li>
             <li className="w-full text-center">
               <button>
-                <i class="fa-brands fa-github text-6xl"></i>
+                <a
+                  href="https://github.com/jobrogi"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {" "}
+                  <i class="fa-brands fa-github text-6xl"></i>
+                </a>
               </button>
             </li>
           </ul>
