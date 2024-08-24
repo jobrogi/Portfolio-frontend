@@ -3,7 +3,7 @@ import React from "react";
 
 function Card(props) {
   return (
-    <div className="bg-ccOffWhite rounded-md shadow-2xl shadow-black w-320 h-420 p-4 flex flex-wrap m-4 content-between relative transition-all bg-gradient-to-t from-ccOffWhite to-orange-200 hover:w-330 hover:h-410 Desktop:basis-96 Laptop:basis-80">
+    <div className="bg-ccOffWhite rounded-md shadow-2xl shadow-black w-320 h-420 Phone:p-2 Tablet:p-4 Laptop:p-4 Desktop:p-4 flex flex-wrap m-4 content-between relative transition-all bg-gradient-to-t from-ccOffWhite to-orange-200 hover:w-330 hover:h-410 Desktop:basis-96 Laptop:basis-80">
       <button className="absolute top-0 left-0 w-full h-full"></button>
       <div className="flex flex-wrap content-start">
         {props.isFontAwesome === true ? (
