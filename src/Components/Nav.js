@@ -288,7 +288,7 @@ function Nav() {
                 PortfolioRef.current.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              <h1 className="Phone:text-base Tablet:text-2xl">Portfolio</h1>
+              <h1 className="Phone:text-base Tablet:text-2xl">Resume</h1>
             </button>
           </li>
         </ul>

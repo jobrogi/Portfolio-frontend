@@ -1,8 +1,8 @@
 import "../index.css";
-import React, { useContext } from "react";
-import { RWDContext } from "../App";
+import React from "react";
+// import { RWDContext } from "../App";
 function Projects() {
-  const { rwdState } = useContext(RWDContext);
+  // const { rwdState } = useContext(RWDContext);
 
   return (
     <div className=" w-full min-h-screen Desktop:px-20 Laptop:px-0 py-10 pattern-paper pattern-ccGray pattern-bg-ccDark pattern-size-24 pattern-opacity-100">

@@ -6,7 +6,7 @@ import Intro from "./Components/Intro";
 import Skills from "./Components/Skills";
 import Nav from "./Components/Nav";
 import Projects from "./Components/Projects";
-import Portfolio from "./Components/Portfolio";
+import Resume from "./Components/Resume";
 
 // Contexts
 export const RefContext = createContext();
@@ -70,7 +70,7 @@ function App() {
           </div>
 
           <div className="w-full h-full" ref={PortfolioRef}>
-            <Portfolio />
+            <Resume />
           </div>
           {/*  */}
         </div>
