@@ -11,6 +11,9 @@ function Intro() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isMouseMoving, setIsMouseMoving] = useState(false);
 
+  // Toggle UFO
+  const [toggleUFO, setToggleUFO] = useState(false);
+
   // Scroll offset
   const [yPos, setYPos] = useState(0);
 
@@ -83,7 +86,7 @@ function Intro() {
         return (
           <div
             onDragStart={(event) => {
-              event.preventDefault();
+              // event.preventDefault();
             }}
           >
             <div
@@ -102,7 +105,7 @@ function Intro() {
                 left: position.x,
                 top: position.y + yPos,
                 transform: `translate(-50%, -50%) rotate(${tilt}deg)`,
-
+                pointerEvents: "none",
                 cursor: "none",
               }}
               src={UFO}
@@ -135,8 +138,7 @@ function Intro() {
               left: position.x,
               top: position.y + yPos,
               transform: `translate(-50%, -50%) rotate(${tilt}deg)`,
-
-              cursor: "none",
+              cursor: "hide",
             }}
             src={UFO}
             alt="oh no"
@@ -147,7 +149,38 @@ function Intro() {
   };
 
   return (
-    <div className="max-w-screen min-h-fit pb-52 w-full font-Merriweather  pattern-cross pattern-bg-ccDark pattern-ccGray  pattern-size-24 pattern-opacity-100">
+    <div className="max-w-screen min-h-fit pb-52 w-full font-Merriweather pattern-cross pattern-bg-ccDark pattern-ccGray  pattern-size-24 pattern-opacity-100">
+      {/* ToggleUFO Button */}
+      {toggleUFO === false ? (
+        <div className="fixed top-0 left-0 w-12 h-5 m-6 rounded-full bg-red-500 hover:red-600">
+          <div className="w-5 h-5  bg-ccOffWhite rounded-full absolute -z-10 transition-all"></div>
+          <button
+            className="w-full h-full"
+            onClick={() => {
+              if (toggleUFO === true) {
+                setToggleUFO(false);
+              } else {
+                setToggleUFO(true);
+              }
+            }}
+          ></button>
+        </div>
+      ) : (
+        <div className="fixed top-0 left-0 w-12 h-5 m-6 rounded-full bg-green-500 z-50 hover:bg-green-600">
+          <div className="w-5 h-5 bg-ccOffWhite rounded-full absolute -z-10 transition-all translate-x-7"></div>
+
+          <button
+            className="w-full h-full "
+            onClick={() => {
+              if (toggleUFO === true) {
+                setToggleUFO(false);
+              } else {
+                setToggleUFO(true);
+              }
+            }}
+          ></button>
+        </div>
+      )}
       <div className="w-full items-end flex flex-nowrap pt-44">
         <p className="w-full text-center text-4xl text-white pb-20 ">
           Hi, I am
@@ -155,7 +188,8 @@ function Intro() {
       </div>
 
       {/* UFO HERE */}
-      {handleUFOState()}
+      {toggleUFO === true ? handleUFOState() : ""}
+
       {/* <p className="w-full text-center text-2xl text-white pb-20">
         A Pragmatic Problem Solver and Developer. <br /> Focused on Developing
         Projects to extend my knowledge!
