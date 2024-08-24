@@ -64,14 +64,14 @@ function App() {
           <div className="w-full h-full" ref={SkillsRef}>
             <Skills />
           </div>
-          {/* 
+
           <div className="w-full h-full" ref={ProjectsRef}>
             <Projects />
           </div>
 
           <div className="w-full h-full" ref={PortfolioRef}>
             <Portfolio />
-          </div> */}
+          </div>
           {/*  */}
         </div>
 

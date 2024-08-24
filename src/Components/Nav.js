@@ -11,18 +11,47 @@ function Nav() {
   //Reads Screen width state from App.js
   const { rwdState } = useContext(RWDContext);
 
-  const section_1 = 1200;
-  const section_2 = 2400;
-  const section_3 = 3600;
+  // This clientHeight allows for a way to get the height dynamically.
+  var section_1 = 0;
+  var section_2 = 0;
+  var section_3 = 10000;
+  var rect;
+
+  var threshold = 300;
 
   //For Name
   const [isFixed, setIsFixed] = useState(false);
   //For Underlines
   const [liActive, setliActive] = useState(0);
 
+  useEffect(() => {
+    if (IntroRef != null) {
+      // rect = IntroRef.current.getBoundingClientRect();
+      section_1 = IntroRef.current.clientHeight - 300;
+      threshold = IntroRef.current.clientHeight - 300;
+    } else {
+      console.log("ERR Intro Ref === Null");
+    }
+    if (SkillsRef != null) {
+      // rect = SkillsRef.current.getBoundingClientRect();
+      section_2 =
+        IntroRef.current.clientHeight + SkillsRef.current.clientHeight - 200;
+    } else {
+      console.log("ERR Skills Ref === Null");
+    }
+    if (ProjectsRef != null) {
+      section_3 =
+        IntroRef.current.clientHeight +
+        SkillsRef.current.clientHeight +
+        ProjectsRef.current.clientHeight -
+        200;
+    } else {
+      console.log("ERR Projects Ref === Null");
+    }
+  }, []);
+
   //Checks if the user has scrolled 500px down and then changes a hook based off that.
   function handleScroll() {
-    const threshold = 500;
     const scrollPos = window.scrollY;
 
     if (scrollPos > threshold) {
@@ -47,6 +76,7 @@ function Nav() {
     if (scrollPos >= section_3) {
       setliActive(3);
     }
+    // console.log("CLIENT HEIGHT " + );
   }
 
   //Event listener for listening for a mouse scroll wheel.
@@ -83,7 +113,7 @@ function Nav() {
                   rel="noreferrer"
                 >
                   {" "}
-                  <i class="fa-brands fa-linkedin text-6xl"></i>
+                  <i className="fa-brands fa-linkedin text-6xl"></i>
                 </a>
               </button>
             </li>
@@ -94,7 +124,7 @@ function Nav() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <i class="fa-solid fa-envelope text-6xl"></i>
+                  <i className="fa-solid fa-envelope text-6xl"></i>
                 </a>
               </button>
             </li>
@@ -106,7 +136,7 @@ function Nav() {
                   rel="noreferrer"
                 >
                   {" "}
-                  <i class="fa-brands fa-github text-6xl"></i>
+                  <i className="fa-brands fa-github text-6xl"></i>
                 </a>
               </button>
             </li>
@@ -117,17 +147,17 @@ function Nav() {
           <ul className="pt-4 w-full">
             <li className="w-full text-center">
               <button>
-                <i class="fa-brands fa-linkedin text-6xl"></i>
+                <i className="fa-brands fa-linkedin text-6xl"></i>
               </button>
             </li>
             <li className="w-full text-center">
               <button>
-                <i class="fa-solid fa-envelope text-6xl"></i>
+                <i className="fa-solid fa-envelope text-6xl"></i>
               </button>
             </li>
             <li className="w-full text-center">
               <button>
-                <i class="fa-brands fa-github text-6xl"></i>
+                <i className="fa-brands fa-github text-6xl"></i>
               </button>
             </li>
           </ul>
@@ -149,7 +179,7 @@ function Nav() {
               }}
             >
               {showHamburgerMenu ? (
-                <i class="fa-solid fa-caret-down text-2xl flex flex-nowrap items-center">
+                <i className="fa-solid fa-caret-down text-2xl flex flex-nowrap items-center">
                   {rwdState !== "Phone" ? (
                     <h1 className="ps-4 text-xl">Contact</h1>
                   ) : (
@@ -180,7 +210,7 @@ function Nav() {
               }}
             >
               {showHamburgerMenu ? (
-                <i class="fa-solid fa-caret-down text-2xl flex flex-nowrap items-center">
+                <i className="fa-solid fa-caret-down text-2xl flex flex-nowrap items-center">
                   {rwdState !== "Phone" ? (
                     <h1 className="ps-4 text-xl">Contact</h1>
                   ) : (
