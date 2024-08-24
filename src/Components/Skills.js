@@ -1,6 +1,6 @@
 import "../index.css";
 import Card from "./Card";
-import cPlusPlus from "../assets/C++.png";
+import cPlusPlus from "../assets/CPlusPlus.png";
 import cSharp from "../assets/CSharp.png";
 
 import React, { useContext } from "react";
